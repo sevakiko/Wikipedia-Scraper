@@ -24,8 +24,12 @@ def get_page_content(title):
     return content
 
 
-nltk.download('punkt')
-nltk.download('stopwords')
+try:
+    nltk.data.find('tokenizers/punkt')
+    nltk.data.find('corpora/stopwords')
+except LookupError:
+    nltk.download('punkt')
+    nltk.download('stopwords')
 
 
 def preprocess_text(text):
